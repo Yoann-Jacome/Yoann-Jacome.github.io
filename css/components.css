@@ -1,73 +1,187 @@
 /* =====================================================================
    components.css — Componentes (navbar, tarjetas, modal, carrusel...)
    ---------------------------------------------------------------------
-   ETAPA 1: estilos mínimos de los componentes del esqueleto.
-   El diseño final (navbar fija, menú móvil, tarjetas, modal...) llega
-   en la Etapa 2 y la Etapa 5.
+   ETAPA 2: navbar fija con menú móvil, botón de tema, hero, tarjetas,
+   herramientas y footer. El modal/carrusel llegan en la Etapa 5.
    ===================================================================== */
 
-/* --- Barra de navegación --- */
+/* ===================== NAVBAR ===================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
 }
 
 .nav-bar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  min-height: 60px;
   flex-wrap: wrap;
+  gap: 12px;
+  min-height: var(--nav-height);
 }
 
 .nav-logo {
   font-weight: 700;
+  font-size: 1.15rem;
   text-decoration: none;
-  color: #111827;
+  color: var(--heading);
+  letter-spacing: -0.01em;
+}
+
+/* Menú principal */
+.primary-nav {
+  order: 3;           /* en móvil cae debajo (ancho completo) */
+  flex-basis: 100%;
 }
 
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  flex-direction: column;
+  gap: 4px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 8px 0 4px;
 }
 
 .nav-links a {
+  display: block;
+  padding: 8px 4px;
   text-decoration: none;
-  color: #1d4ed8;
+  color: var(--text);
+  font-weight: 500;
 }
 
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* --- Botón de tema --- */
 .theme-toggle {
   margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #f3f4f6;
-  padding: 6px 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  transition: background-color var(--transition);
 }
 
-/* --- HERO --- */
+.theme-toggle:hover {
+  background-color: var(--hover-surface);
+}
+
+.theme-toggle-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* --- Botón hamburguesa (solo móvil) --- */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+}
+
+.nav-toggle .bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--text);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Estado abierto: la “X” */
+.site-header.nav-open .nav-toggle .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.site-header.nav-open .nav-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+.site-header.nav-open .nav-toggle .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Menú colapsado en móvil --- */
+.primary-nav {
+  display: none;
+}
+
+.site-header.nav-open .primary-nav {
+  display: block;
+  border-top: 1px solid var(--border);
+}
+
+/* --- Escritorio (≈ tablet y superior) --- */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav {
+    display: block;
+    order: 0;
+    flex-basis: auto;
+    margin-left: 8px;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 18px;
+    padding: 0;
+  }
+
+  .nav-links a {
+    padding: 6px 2px;
+  }
+}
+
+/* ===================== HERO ===================== */
 .hero {
-  padding: 56px 0;
+  padding: clamp(3rem, 8vw, 5rem) 0;
   text-align: center;
+  background: linear-gradient(180deg, var(--surface-2), var(--bg));
 }
 
 .hero .avatar {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  margin: 0 auto 16px;
+  margin: 0 auto 20px;
+  border: 3px solid var(--accent);
+}
+
+.hero h1 {
+  margin-bottom: 0.25em;
 }
 
 .hero-role {
-  font-size: 1.1rem;
-  color: #374151;
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hero-tagline {
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+  color: var(--text-muted);
 }
 
 .hero-actions {
@@ -75,50 +189,75 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 20px;
 }
 
-/* --- Trabajos --- */
+/* ===================== TRABAJOS ===================== */
 .filters {
-  margin: 16px 0 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 32px;
+}
+
+.works-group {
+  margin-top: 8px;
 }
 
 .works-category {
-  margin-top: 32px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #e5e7eb;
+  margin-top: 40px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
 }
 
 .works-subcategory {
-  margin: 20px 0 10px;
-  color: #374151;
+  margin: 24px 0 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
 }
 
+/* --- Tarjeta de trabajo --- */
 .card {
+  display: block;
   min-height: 180px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-/* --- Herramientas --- */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* ===================== HERRAMIENTAS ===================== */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 14px;
-  margin-top: 16px;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .tool {
+  min-height: 110px;
   padding: 20px 12px;
+  font-weight: 600;
 }
 
-/* --- Footer / Contacto --- */
+/* ===================== FOOTER / CONTACTO ===================== */
 .site-footer {
-  padding: 48px 0 24px;
-  border-top: 1px solid #e5e7eb;
+  padding: var(--section-y) 0 24px;
+  border-top: 1px solid var(--border);
+  background-color: var(--surface-2);
 }
 
 .contact-links {
   list-style: none;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -132,8 +271,8 @@
 .certificates-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 14px;
-  margin-top: 12px;
+  gap: 16px;
+  margin: 12px 0 8px;
 }
 
 .certificates-grid .placeholder {
@@ -141,8 +280,8 @@
 }
 
 .copyright {
-  margin-top: 32px;
+  margin-top: 40px;
   text-align: center;
-  color: #6b7280;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }

@@ -4,7 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Aplica el tema ANTES del primer render para evitar el parpadeo.
+       Prioridad: preferencia guardada en localStorage → prefers-color-scheme. -->
+  <script>
+    (function () {
+      var theme;
+      try {
+        theme = localStorage.getItem("portafolio-theme");
+      } catch (e) {
+        /* localStorage puede estar bloqueado (modo privado, file://): usamos null */
+        theme = null;
+      }
+      if (theme !== "dark" && theme !== "light") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
   <title>Yoann Esteban Jacome Garcia — Portafolio</title>
+  <meta name="theme-color" content="#121212" />
+
+  <!-- Tipografía: Inter (Google Fonts) con respaldo de fuentes del sistema.
+       Si no hay internet, base.css usa la pila de fuentes del sistema. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <meta name="description"
     content="Portafolio de Yoann Esteban Jacome Garcia, Ingeniero en Multimedia: videojuegos, realidad virtual, web, apps móviles, modelado y renderizado 3D, video, audio y motion graphics." />
 
@@ -22,12 +52,12 @@
 <body>
 
   <!-- ===================== NAVBAR ===================== -->
-  <!-- El botón de tema se conecta en la Etapa 2 y el de idioma (ES/EN) en la Etapa 8. -->
-  <header class="site-header">
+  <!-- El botón de idioma (ES/EN) se agrega en la Etapa 8. -->
+  <header class="site-header" id="site-header">
     <div class="container nav-bar">
       <a href="#inicio" class="nav-logo">Yoann Jacome</a>
 
-      <nav aria-label="Navegación principal">
+      <nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
         <ul class="nav-links">
           <li><a href="#sobre-mi">Sobre mí</a></li>
           <li><a href="#experiencia">Experiencia</a></li>
@@ -37,8 +67,31 @@
         </ul>
       </nav>
 
-      <!-- [RELLENO] El cambio de tema se implementa en la Etapa 2 -->
-      <button type="button" class="theme-toggle" aria-label="Cambiar tema">🌙 [RELLENO] Tema</button>
+      <!-- Botón de tema: alterna oscuro/claro y guarda la preferencia -->
+      <button
+        type="button"
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-pressed="false"
+        aria-label="Cambiar tema"
+      >
+        <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle-text">Tema</span>
+      </button>
+
+      <!-- Botón hamburguesa (visible solo en móvil) -->
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Abrir menú"
+      >
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
