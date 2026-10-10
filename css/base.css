@@ -1,6 +1,122 @@
 /* =====================================================================
    base.css — Reset, tipografía y utilidades de layout
    ---------------------------------------------------------------------
-   Se completará en la Etapa 2 (Sistema de diseño y temas).
-   Aquí viven los estilos base (reset, tipografía, contenedores).
+   ETAPA 1: CSS mínimo y legible (todavía SIN diseño final).
+   En la Etapa 2 se completa el sistema de diseño y los temas.
    ===================================================================== */
+
+/* --- Reset sencillo --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: #111827;
+  background-color: #f8f9fa;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Contenedor centrado --- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Secciones --- */
+.section {
+  padding: 48px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.section h2 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.section h3 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Deja espacio bajo la navbar al saltar a una sección con el ancla */
+section[id],
+footer[id] {
+  scroll-margin-top: 80px;
+}
+
+/* --- Botones (mínimos, estilo final en Etapa 2) --- */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: #1d4ed8;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #1d4ed8;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #1d4ed8;
+}
+
+/* --- Marcador de contenido pendiente --- */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border: 2px dashed #9ca3af;
+  border-radius: 10px;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  font-size: 0.9rem;
+}
+
+/* --- Grilla de tarjetas de trabajos (3 / 2 / 1 columnas) --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Líneas de tiempo (Educación / Experiencia) --- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border-left: 2px solid #d1d5db;
+}
+
+.timeline li {
+  margin-bottom: 14px;
+}
