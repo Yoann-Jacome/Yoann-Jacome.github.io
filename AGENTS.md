@@ -1,0 +1,1 @@
+Lee y sigue PORTAFOLIO_SPEC.md; trabaja una etapa a la vez.

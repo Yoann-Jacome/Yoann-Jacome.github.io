@@ -1,0 +1,19 @@
+# =====================================================================
+# .gitignore — Archivos que Git debe ignorar
+# =====================================================================
+# Proyecto estático (HTML + CSS + JS). No hay build ni dependencias,
+# así que solo se ignoran archivos del sistema operativo y del editor.
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- OneDrive ---
+desktop.ini
+
+# --- Editores / IDE ---
+.vscode/
+.idea/
+*.swp
+*~
