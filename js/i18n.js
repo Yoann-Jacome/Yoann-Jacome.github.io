@@ -21,9 +21,9 @@ window.I18N = {
   es: {
     /* ---------- Navegación ---------- */
     "nav.about": "Sobre mí",
-    "nav.experience": "Experiencia",
     "nav.works": "Trabajos",
     "nav.tools": "Herramientas",
+    "nav.achievements": "Logros",
     "nav.contact": "Contacto",
     "nav.theme": "Tema",
     "nav.toggleTheme": "Cambiar tema",
@@ -43,32 +43,14 @@ window.I18N = {
     "about.title": "Sobre mí",
     "about.profile":
       "Me enfoco en el desarrollo web y la creación de experiencias interactivas para dispositivos móviles y entornos de realidad virtual. Cuento con conocimientos en desarrollo de videojuegos, modelado y renderizado 3D, así como en la creación y producción de contenido audiovisual, combinando diseño y narrativa en el desarrollo de proyectos multimedia.",
-    "about.educationTitle": "Educación",
-    "about.edu1.title": "Ingeniería en Multimedia",
-    "about.edu1.place": "Universidad Militar Nueva Granada",
-    "about.edu1.period": "2022 — Actualmente",
-    "about.edu2.title": "Bachillerato",
-    "about.edu2.place": "Colegio Distrital Los Periodistas",
-    "about.edu2.period": "2016 — 2021",
-
-    /* ---------- Experiencia ---------- */
-    "experience.title": "Experiencia",
-    "experience.jobsTitle": "Experiencia laboral",
-    "experience.job1.role": "Asesor comercial temporal",
-    "experience.job1.company": "Forus Colombia",
-    "experience.job1.period": "04/12/2024 — 31/12/2024",
-    "experience.job2.role": "Asesor comercial temporal",
-    "experience.job2.company": "Forus Colombia",
-    "experience.job2.period": "05/12/2025 — 04/01/2026",
-    "experience.job3.role": "Auxiliar de inventario temporal",
-    "experience.job3.company": "Pernine Ltda",
-    "experience.job3.period": "19/01/2026 — 27/01/2026",
-    "experience.achievementsTitle": "Logros",
-    "experience.achievement1":
-      "Participación en el 19° Congreso Colombiano de Computación 2025 — videojuego de físicas \"Tiro Perfecto\" (Rol: Desarrollador).",
 
     /* ---------- Herramientas (los íconos llegan en la Etapa 7) ---------- */
     "tools.title": "Herramientas",
+
+    /* ---------- Logros ---------- */
+    "achievements.title": "Logros",
+    "achievements.item1":
+      "Participación en el 19° Congreso Colombiano de Computación 2025 — videojuego de físicas \"Tiro Perfecto\" (Rol: Desarrollador).",
 
     /* ---------- Footer / Contacto ---------- */
     "footer.contactTitle": "Contacto",

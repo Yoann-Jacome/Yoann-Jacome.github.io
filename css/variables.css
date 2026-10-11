@@ -27,8 +27,8 @@
 
   --transition: 200ms ease;
 
-  /* Espaciado vertical de secciones */
-  --section-y: clamp(3rem, 6vw, 5rem);
+  /* Espaciado vertical de secciones (moderado para un scroll fluido) */
+  --section-y: clamp(2.5rem, 4.5vw, 3.5rem);
 }
 
 /* =====================================================================

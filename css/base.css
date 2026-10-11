@@ -68,22 +68,13 @@ a {
 }
 
 /* --- Secciones --- */
-/* Cada sección ocupa al menos toda la pantalla (menos la navbar) y su
-   contenido se centra verticalmente, de modo que al navegar a una
-   sección con el ancla queda completamente visible y sin espacios
-   vacíos incómodos. */
+/* Espaciado vertical moderado para que el scroll se vea fluido y sin
+   grandes huecos arriba/abajo de cada sección. */
 .section {
-  min-height: calc(100vh - var(--nav-height));
-  display: flex;
-  align-items: center;
   padding: var(--section-y) 0;
 }
 
-.section > .container {
-  width: 100%;
-}
-
-/* Secciones centradas horizontalmente (Sobre mí, Experiencia) */
+/* Secciones centradas horizontalmente (Sobre mí, Logros) */
 .section--center {
   text-align: center;
 }
@@ -91,18 +82,6 @@ a {
 .section--center .about-text {
   margin-left: auto;
   margin-right: auto;
-}
-
-.section--center .timeline {
-  border-left: none;
-  padding-left: 0;
-  max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section--center .timeline li {
-  margin-bottom: 28px;
 }
 
 .section--center .achievements {
@@ -187,37 +166,6 @@ footer[id] {
   .cards-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* --- Líneas de tiempo (Educación / Experiencia) --- */
-.timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 20px;
-  border-left: 2px solid var(--border);
-}
-
-.timeline li {
-  margin-bottom: 14px;
-}
-
-.timeline li strong {
-  font-size: 1.25rem;
-}
-
-/* Institución / empresa */
-.timeline-place {
-  display: block;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-}
-
-/* Periodo o fechas */
-.timeline-period {
-  display: block;
-  font-size: 1rem;
-  color: var(--accent);
-  font-weight: 600;
 }
 
 /* Lista de logros */
