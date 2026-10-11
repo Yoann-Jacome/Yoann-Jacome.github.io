@@ -35,14 +35,14 @@ window.I18N = {
     "hero.name": "Yoann Esteban Jacome Garcia",
     "hero.role": "Ingeniero en Multimedia",
     "hero.tagline":
-      "Desarrollo experiencias interactivas: videojuegos, realidad virtual y contenido audiovisual.",
+      "¡Bienvenido! Creo experiencias interactivas: videojuegos, aplicaciones y contenido audiovisual. ¡Trabajemos juntos!",
     "hero.viewWorks": "Ver mis trabajos",
     "hero.downloadCV": "Descargar CV",
 
     /* ---------- Sobre mí ---------- */
     "about.title": "Sobre mí",
     "about.profile":
-      "Ingeniero en Multimedia enfocado en el desarrollo web y la creación de experiencias interactivas para dispositivos móviles y entornos de realidad virtual. Cuento con conocimientos en desarrollo de videojuegos, modelado y renderizado 3D, así como en la creación y producción de contenido audiovisual, combinando diseño y narrativa en el desarrollo de proyectos multimedia.",
+      "Me enfoco en el desarrollo web y la creación de experiencias interactivas para dispositivos móviles y entornos de realidad virtual. Cuento con conocimientos en desarrollo de videojuegos, modelado y renderizado 3D, así como en la creación y producción de contenido audiovisual, combinando diseño y narrativa en el desarrollo de proyectos multimedia.",
     "about.educationTitle": "Educación",
     "about.edu1.title": "Ingeniería en Multimedia",
     "about.edu1.place": "Universidad Militar Nueva Granada",

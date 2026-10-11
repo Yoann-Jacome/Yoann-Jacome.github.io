@@ -18,7 +18,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  line-height: 1.6;
+  font-size: 1.0625rem;   /* ~17px base, un poco más grande para mejor lectura */
+  line-height: 1.7;
   color: var(--text);
   background-color: var(--bg);
   transition: background-color var(--transition), color var(--transition);
@@ -39,10 +40,10 @@ h4 {
   margin: 0 0 0.5em;
 }
 
-h1 { font-size: clamp(1.9rem, 5vw, 2.75rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
-h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
-h4 { font-size: 1.05rem; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: clamp(2rem, 5vw, 3rem); }
+h3 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); }
+h4 { font-size: 1.15rem; }
 
 p { margin: 0 0 1rem; }
 
@@ -67,8 +68,53 @@ a {
 }
 
 /* --- Secciones --- */
+/* Cada sección ocupa al menos toda la pantalla (menos la navbar) y su
+   contenido se centra verticalmente, de modo que al navegar a una
+   sección con el ancla queda completamente visible y sin espacios
+   vacíos incómodos. */
 .section {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
   padding: var(--section-y) 0;
+}
+
+.section > .container {
+  width: 100%;
+}
+
+/* Secciones centradas horizontalmente (Sobre mí, Experiencia) */
+.section--center {
+  text-align: center;
+}
+
+.section--center .about-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section--center .timeline {
+  border-left: none;
+  padding-left: 0;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section--center .timeline li {
+  margin-bottom: 28px;
+}
+
+.section--center .achievements {
+  list-style: none;
+  padding-left: 0;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section--center .achievements li {
+  margin-bottom: 14px;
 }
 
 /* Deja espacio bajo la navbar fija al saltar a una sección con el ancla */
@@ -155,16 +201,21 @@ footer[id] {
   margin-bottom: 14px;
 }
 
+.timeline li strong {
+  font-size: 1.25rem;
+}
+
 /* Institución / empresa */
 .timeline-place {
   display: block;
+  font-size: 1.1rem;
   color: var(--text-muted);
 }
 
 /* Periodo o fechas */
 .timeline-period {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--accent);
   font-weight: 600;
 }
@@ -173,6 +224,7 @@ footer[id] {
 .achievements {
   margin: 0;
   padding-left: 20px;
+  font-size: 1.15rem;
 }
 
 .achievements li {
@@ -181,7 +233,9 @@ footer[id] {
 
 /* Texto de perfil */
 .about-text {
-  max-width: 70ch;
+  max-width: 72ch;
+  font-size: 1.25rem;
+  line-height: 1.8;
 }
 
 /* --- Utilidad: ocultar visualmente pero mantener para lectores de pantalla --- */

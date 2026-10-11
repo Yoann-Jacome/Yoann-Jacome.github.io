@@ -154,35 +154,43 @@
 
 /* ===================== HERO ===================== */
 .hero {
-  padding: clamp(3rem, 8vw, 5rem) 0;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
   text-align: center;
+  padding: clamp(3rem, 8vw, 5rem) 0;
   background: linear-gradient(180deg, var(--surface-2), var(--bg));
 }
 
+.hero > .container {
+  width: 100%;
+}
+
 .hero .avatar {
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
-  margin: 0 auto 20px;
+  margin: 0 auto 24px;
   border: 3px solid var(--accent);
   object-fit: cover;   /* la foto de perfil se recorta en círculo */
   background-color: var(--surface);
 }
 
 .hero h1 {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.3em;
 }
 
 .hero-role {
-  font-size: 1.15rem;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
   color: var(--accent);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .hero-tagline {
-  max-width: 620px;
-  margin: 0 auto 1.5rem;
+  max-width: 720px;
+  margin: 0 auto 1.75rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   color: var(--text-muted);
 }
 
