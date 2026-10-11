@@ -142,7 +142,13 @@
     var body = el("div", "work-body");
 
     if (title) body.appendChild(el("h4", "work-title", title));
-    if (project.role) body.appendChild(el("span", "work-role", window.t(project.role)));
+    if (project.role) {
+      // En la tarjeta se muestra solo la parte principal del rol (lo que va
+      // antes de " - "); el rol completo se mostrará en el modal (Etapa 5).
+      var roleFull = window.t(project.role);
+      var roleShort = roleFull.split(/\s+[-–—]\s+/)[0];
+      body.appendChild(el("span", "work-role", roleShort));
+    }
     if (project.summary) body.appendChild(el("p", "work-summary", window.t(project.summary)));
 
     var tags = Array.isArray(project.tags) ? project.tags : [];
