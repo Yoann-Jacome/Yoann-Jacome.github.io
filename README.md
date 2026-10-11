@@ -1,7 +1,7 @@
 # Portafolio Web — Yoann Esteban Jacome Garcia
 
 Sitio web personal (portafolio) de **Yoann Esteban Jacome Garcia**, estudiante de
-Ingeniería en Multimedia. Muestra sus trabajos de la universidad (videojuegos,
+Ingeniería en Multimedia. En este se hace una muestra de los trabajos realizados en la universidad (videojuegos,
 realidad virtual, web, apps móviles, modelado y renderizado 3D, video, audio y
 motion graphics), su perfil, estudios, experiencia, herramientas y contacto.
 
@@ -9,9 +9,6 @@ motion graphics), su perfil, estudios, experiencia, herramientas y contacto.
 - **Tecnología:** HTML + CSS + JavaScript puro (vanilla). Sin frameworks, sin build,
   sin dependencias de npm.
 - **Repositorio:** https://github.com/Yoann-Jacome/Yoann-Jacome.github.io
-
-> La fuente de verdad del proyecto es `PORTAFOLIO_SPEC.md`. Antes de modificar el
-> proyecto, léelo completo. El desarrollo avanza **una etapa a la vez**.
 
 ---
 
