@@ -65,7 +65,7 @@ window.I18N = {
     "experience.job3.period": "19/01/2026 — 27/01/2026",
     "experience.achievementsTitle": "Logros",
     "experience.achievement1":
-      "Participación en el 19.° Congreso Colombiano de Computación 2025 con el videojuego de físicas «Tiro Perfecto» (rol: Desarrollador).",
+      "Participación en el 19° Congreso Colombiano de Computación 2025 — videojuego de físicas \"Tiro Perfecto\" (Rol: Desarrollador).",
 
     /* ---------- Herramientas (los íconos llegan en la Etapa 7) ---------- */
     "tools.title": "Herramientas",
