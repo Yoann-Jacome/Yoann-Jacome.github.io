@@ -153,9 +153,14 @@
 
     var tags = Array.isArray(project.tags) ? project.tags : [];
     if (tags.length) {
+      // Traduce una sola vez y guarda TODAS las etiquetas en la tarjeta: así
+      // los filtros pueden usarlas aunque la tarjeta muestre solo 3.
+      var tagLabels = tags.map(function (tag) { return window.t(tag); });
+      card.setAttribute("data-tags", JSON.stringify(tagLabels));
+
       var ul = el("ul", "work-tags");
-      tags.slice(0, 3).forEach(function (tag) {
-        ul.appendChild(el("li", "work-tag", window.t(tag)));
+      tagLabels.slice(0, 3).forEach(function (label) {
+        ul.appendChild(el("li", "work-tag", label));
       });
       body.appendChild(ul);
     }
@@ -203,10 +208,175 @@
 
       container.appendChild(group);
     });
+
+    // Barra de filtros por etiqueta (Etapa 6) y estado inicial.
+    renderFilters();
+    applyWorksFilter("");
+  }
+
+  /* ===================== Filtros (Etapa 6) ===================== */
+
+  var filterButtons = {}; // etiqueta → botón de la barra
+
+  /* Etiquetas únicas (traducidas), en orden de aparición en los datos. */
+  function collectTags() {
+    var labels = [];
+    getProjects().forEach(function (p) {
+      (Array.isArray(p.tags) ? p.tags : []).forEach(function (tag) {
+        var label = window.t(tag);
+        if (labels.indexOf(label) === -1) labels.push(label);
+      });
+    });
+    return labels;
+  }
+
+  /* Genera la barra: "Todos" + una pestaña por etiqueta. */
+  function renderFilters() {
+    var container = document.getElementById("works-filters");
+    if (!container) return;
+    container.textContent = "";
+    filterButtons = {};
+
+    var all = el("button", "filter-btn", window.t("filters.all"));
+    all.type = "button";
+    all.setAttribute("aria-pressed", "true");
+    all.addEventListener("click", function () { applyWorksFilter(""); });
+    container.appendChild(all);
+    filterButtons[""] = all;
+
+    collectTags().forEach(function (label) {
+      var btn = el("button", "filter-btn", label);
+      btn.type = "button";
+      btn.setAttribute("aria-pressed", "false");
+      btn.addEventListener("click", function () { applyWorksFilter(label); });
+      container.appendChild(btn);
+      filterButtons[label] = btn;
+    });
+  }
+
+  /* Oculta las tarjetas que no tienen la etiqueta y las secciones que
+     queden vacías. Con "" (o sin argumento) se muestran todas. */
+  function applyWorksFilter(label) {
+    label = label || "";
+    var container = document.getElementById("works-list");
+    if (!container) return;
+
+    // 1) Tarjetas que no coinciden.
+    Array.prototype.forEach.call(container.querySelectorAll(".work-card"), function (card) {
+      var tags = [];
+      try {
+        tags = JSON.parse(card.getAttribute("data-tags") || "[]");
+      } catch (e) {
+        tags = [];
+      }
+      card.hidden = !!label && tags.indexOf(label) === -1;
+    });
+
+    // 2) Subcategorías sin tarjetas visibles.
+    Array.prototype.forEach.call(container.querySelectorAll(".works-subgroup"), function (sub) {
+      var visible = false;
+      Array.prototype.forEach.call(sub.querySelectorAll(".work-card"), function (card) {
+        if (!card.hidden) visible = true;
+      });
+      sub.hidden = !visible;
+    });
+
+    // 3) Categorías sin subcategorías visibles.
+    Array.prototype.forEach.call(container.querySelectorAll(".works-group"), function (group) {
+      var visible = false;
+      Array.prototype.forEach.call(group.querySelectorAll(".works-subgroup"), function (sub) {
+        if (!sub.hidden) visible = true;
+      });
+      group.hidden = !visible;
+    });
+
+    // 4) Estado accesible de los botones (aria-pressed).
+    Object.keys(filterButtons).forEach(function (key) {
+      filterButtons[key].setAttribute("aria-pressed", String(key === label));
+    });
+  }
+
+  /* ===================== Herramientas (Etapa 7) ===================== */
+
+  function renderTools() {
+    var container = document.getElementById("tools-grid");
+    if (!container) return;
+    container.textContent = "";
+
+    var tools = Array.isArray(window.TOOLS) ? window.TOOLS : [];
+    tools.forEach(function (tool) {
+      var card = el("div", "tool");
+      if (tool.icon) {
+        var img = document.createElement("img");
+        img.src = tool.icon;
+        img.alt = "";
+        img.setAttribute("aria-hidden", "true");
+        img.loading = "lazy";
+        // Si el logo todavía no existe, se quita y queda solo el nombre.
+        img.onerror = function () {
+          if (img.parentNode) img.parentNode.removeChild(img);
+        };
+        card.appendChild(img);
+      }
+      card.appendChild(el("span", "tool-name", window.t(tool.name)));
+      container.appendChild(card);
+    });
+  }
+
+  /* ===================== Certificados (Etapa 7) ===================== */
+
+  function renderCertificates() {
+    var container = document.getElementById("certificates-grid");
+    if (!container) return;
+    container.textContent = "";
+
+    var certs = Array.isArray(window.CERTIFICATES) ? window.CERTIFICATES : [];
+    certs.forEach(function (cert) {
+      var title = window.t(cert.title);
+      var sub = [window.t(cert.issuer), cert.date || cert.year]
+        .filter(Boolean)
+        .join(" · ");
+
+      var card = el("button", "cert-card");
+      card.type = "button";
+      card.setAttribute("aria-label", window.t("cert.open") + " " + title);
+
+      if (cert.image) {
+        var img = document.createElement("img");
+        img.src = cert.image;
+        img.alt = title;
+        img.loading = "lazy";
+        img.decoding = "async";
+        card.appendChild(img);
+      } else {
+        card.appendChild(el("span", "cert-placeholder", "📜"));
+      }
+
+      var meta = el("span", "cert-meta");
+      meta.appendChild(el("span", "cert-title", title));
+      if (sub) meta.appendChild(el("span", "cert-sub", sub));
+      card.appendChild(meta);
+
+      // Clic → lightbox con la imagen y el botón de descarga (PDF).
+      card.addEventListener("click", function () {
+        window.openLightbox({
+          src: cert.image,
+          alt: title,
+          caption: title + (sub ? " — " + sub : ""),
+          downloadUrl: cert.file || "",
+          downloadLabel: window.t("cert.download")
+        });
+      });
+
+      container.appendChild(card);
+    });
   }
 
   // Expuesto para que main.js lo llame cuando el DOM esté listo.
   window.renderWorks = renderWorks;
+  window.renderTools = renderTools;
+  window.renderCertificates = renderCertificates;
+  window.applyWorksFilter = applyWorksFilter;
 
   // Devuelve la etiqueta traducida de una subcategoría (la usa el modal).
   window.worksSubcategoryLabel = function (key) {

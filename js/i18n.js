@@ -64,8 +64,17 @@ window.I18N = {
     "modal.team": "Equipo",
     "modal.goToSlide": "Ir a la diapositiva",
 
-    /* ---------- Herramientas (los íconos llegan en la Etapa 7) ---------- */
+    /* ---------- Filtros (Etapa 6) ---------- */
+    "filters.label": "Filtrar trabajos por etiqueta",
+    "filters.all": "Todos",
+
+    /* ---------- Herramientas, certificados y contacto (Etapa 7) ---------- */
     "tools.title": "Herramientas",
+    "cert.open": "Ver certificado",
+    "cert.download": "Descargar certificado",
+    "contact.email": "Correo",
+    "contact.linkedin": "LinkedIn",
+    "contact.github": "GitHub",
 
     /* ---------- Logros ---------- */
     "achievements.title": "Logros",

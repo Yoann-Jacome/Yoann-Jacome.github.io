@@ -395,8 +395,13 @@
     }
   }
 
-  /* Teclado global del modal: Esc, ← → y Tab. */
+  /* Teclado global del modal y del lightbox: Esc, ← → y Tab. */
   function onGlobalKey(event) {
+    // El lightbox de certificados tiene prioridad si está abierto.
+    if (lightboxEl && !lightboxEl.hidden) {
+      if (event.key === "Escape") closeLightbox();
+      return;
+    }
     if (!modalEl || modalEl.hidden) return;
     if (event.key === "Escape") {
       closeModal();
@@ -437,6 +442,96 @@
     openFromHash();
   }
 
+  /* ===================== Lightbox (certificados, Etapa 7) =====================
+     Reutiliza el patrón del modal: fondo, cierre con ✕/Esc/fondo, bloqueo
+     del scroll y devolución del foco. Muestra la imagen y un botón para
+     descargar el PDF del certificado. */
+  var lightboxEl = null;
+  var lightboxLastFocus = null;
+
+  function ensureLightbox() {
+    if (lightboxEl) return lightboxEl;
+
+    lightboxEl = document.createElement("div");
+    lightboxEl.className = "lightbox";
+    lightboxEl.hidden = true;
+    lightboxEl.setAttribute("role", "dialog");
+    lightboxEl.setAttribute("aria-modal", "true");
+
+    var backdrop = document.createElement("div");
+    backdrop.className = "lightbox-backdrop";
+    backdrop.addEventListener("click", closeLightbox);
+    lightboxEl.appendChild(backdrop);
+
+    var panel = document.createElement("div");
+    panel.className = "lightbox-panel";
+
+    var close = document.createElement("button");
+    close.type = "button";
+    close.className = "lightbox-close";
+    close.setAttribute("aria-label", t("modal.close"));
+    close.textContent = "✕";
+    close.addEventListener("click", closeLightbox);
+    panel.appendChild(close);
+
+    panel.appendChild(el2("div", "lightbox-media"));
+    panel.appendChild(el2("p", "lightbox-caption"));
+    panel.appendChild(el2("div", "lightbox-actions"));
+
+    lightboxEl.appendChild(panel);
+    document.body.appendChild(lightboxEl);
+    return lightboxEl;
+  }
+
+  /* Ayudante local para crear elementos (mismo estilo que render.js). */
+  function el2(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = text;
+    return node;
+  }
+
+  function openLightbox(options) {
+    var el = ensureLightbox();
+    options = options || {};
+    lightboxLastFocus = document.activeElement;
+
+    var media = el.querySelector(".lightbox-media");
+    media.textContent = "";
+    if (options.src) {
+      var img = document.createElement("img");
+      img.src = options.src;
+      img.alt = options.alt || "";
+      media.appendChild(img);
+    }
+
+    el.querySelector(".lightbox-caption").textContent = options.caption || options.title || "";
+
+    var actions = el.querySelector(".lightbox-actions");
+    actions.textContent = "";
+    if (options.downloadUrl) {
+      var link = document.createElement("a");
+      link.className = "btn";
+      link.href = options.downloadUrl;
+      link.setAttribute("download", "");
+      link.textContent = options.downloadLabel || t("cert.download");
+      actions.appendChild(link);
+    }
+
+    el.hidden = false;
+    document.body.classList.add("scroll-locked");
+    el.querySelector(".lightbox-close").focus();
+  }
+
+  function closeLightbox() {
+    if (!lightboxEl || lightboxEl.hidden) return;
+    lightboxEl.hidden = true;
+    document.body.classList.remove("scroll-locked");
+    if (lightboxLastFocus && lightboxLastFocus.focus) lightboxLastFocus.focus();
+    lightboxLastFocus = null;
+  }
+
   window.openProjectModal = openModal;
+  window.openLightbox = openLightbox;
   window.initModal = initModal;
 })();

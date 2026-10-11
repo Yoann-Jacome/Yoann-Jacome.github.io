@@ -412,6 +412,31 @@ window.PROJECTS = [
   // ...agregar más trabajos aquí (separados por comas)
 ];
 
-/* Certificados (galería con lightbox). Se completa en la Etapa 7.
-   Cada uno: { title, image, issuer, year } */
-window.CERTIFICATES = [];
+/* Herramientas (cuadrícula de la sección "Herramientas", Etapa 7).
+   Cada una: { name, icon }. Si el archivo del ícono no existe todavía, la
+   tarjeta muestra solo el nombre (el <img> se oculta solo al fallar). */
+window.TOOLS = [
+  { name: "Unity", icon: "assets/icons/unity.svg" },
+  { name: "Unreal Engine", icon: "assets/icons/unreal-engine.svg" },
+  { name: "Maya", icon: "assets/icons/maya.svg" },
+  { name: "Mudbox", icon: "assets/icons/mudbox.svg" },
+  { name: "Photoshop", icon: "assets/icons/photoshop.svg" },
+  { name: "Premiere Pro", icon: "assets/icons/premiere-pro.svg" },
+  { name: "Audition", icon: "assets/icons/audition.svg" },
+  { name: "After Effects", icon: "assets/icons/after-effects.svg" }
+];
+
+/* Certificados (galería con lightbox, Etapa 7). Cada uno:
+     { title, image, issuer, year, date (opcional), file (PDF, opcional) }
+   `image` se ve como miniatura y en el lightbox; `file` alimenta el botón
+   "Descargar certificado". Los textos admiten string o { es, en }. */
+window.CERTIFICATES = [
+  {
+    title: "Participación 19.º Congreso Colombiano de Computación – 19CCC",
+    image: "assets/img/certificates/Certificado19CCC.png",
+    issuer: "Sociedad Colombiana de Computación",
+    year: "2025",
+    date: "12 de septiembre de 2025",
+    file: "assets/img/certificates/Certificado19CCC_ID146.pdf"
+  }
+];
