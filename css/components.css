@@ -165,6 +165,8 @@
   border-radius: 50%;
   margin: 0 auto 20px;
   border: 3px solid var(--accent);
+  object-fit: cover;   /* la foto de perfil se recorta en círculo */
+  background-color: var(--surface);
 }
 
 .hero h1 {
@@ -253,6 +255,12 @@
   padding: var(--section-y) 0 24px;
   border-top: 1px solid var(--border);
   background-color: var(--surface-2);
+}
+
+/* Separación clara entre el bloque de contacto (con el botón de CV) y
+   el siguiente apartado (Certificados). */
+.site-footer h3 {
+  margin-top: 2.5rem;
 }
 
 .contact-links {

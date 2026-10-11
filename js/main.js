@@ -41,6 +41,8 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    // Aplica los textos de i18n.js (español por ahora) al HTML estático.
+    if (window.applyTranslations) window.applyTranslations(document);
     initMobileNav();
   });
 })();

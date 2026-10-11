@@ -59,11 +59,11 @@
 
       <nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
         <ul class="nav-links">
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#experiencia">Experiencia</a></li>
-          <li><a href="#trabajos">Trabajos</a></li>
-          <li><a href="#herramientas">Herramientas</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+          <li><a href="#trabajos" data-i18n="nav.works">Trabajos</a></li>
+          <li><a href="#herramientas" data-i18n="nav.tools">Herramientas</a></li>
+          <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
         </ul>
       </nav>
 
@@ -100,17 +100,31 @@
     <!-- ===================== HERO ===================== -->
     <section id="inicio" class="hero">
       <div class="container">
-        <!-- [RELLENO] La foto real se agrega en la Etapa 3 -->
-        <div class="avatar placeholder" aria-hidden="true">[RELLENO]<br>Foto de perfil</div>
+        <img
+          class="avatar"
+          src="assets/img/profile/FotoPortafolio.png"
+          alt="Foto de perfil de Yoann Jacome"
+          width="150"
+          height="150"
+          data-i18n="hero.photoAlt"
+          data-i18n-attr="alt"
+        />
 
-        <h1>Yoann Esteban Jacome Garcia</h1>
-        <p class="hero-role">Ingeniero en Multimedia</p>
-        <p class="hero-tagline">[RELLENO] Frase corta de presentación (llega en la Etapa 3).</p>
+        <h1 data-i18n="hero.name">Yoann Esteban Jacome Garcia</h1>
+        <p class="hero-role" data-i18n="hero.role">Ingeniero en Multimedia</p>
+        <p class="hero-tagline" data-i18n="hero.tagline">
+          Desarrollo experiencias interactivas: videojuegos, realidad virtual y contenido audiovisual.
+        </p>
 
         <div class="hero-actions">
-          <a class="btn" href="#trabajos">Ver mis trabajos</a>
-          <!-- [RELLENO] El PDF real lo entrega el dueño (Etapa 3) -->
-          <a class="btn btn-secondary" href="assets/cv/hoja-de-vida.pdf" download>Descargar CV</a>
+          <a class="btn" href="#trabajos" data-i18n="hero.viewWorks">Ver mis trabajos</a>
+          <a
+            class="btn btn-secondary"
+            href="assets/cv/hoja-de-vida.pdf"
+            download
+            data-i18n="hero.downloadCV"
+            >Descargar CV</a
+          >
         </div>
       </div>
     </section>
@@ -118,35 +132,72 @@
     <!-- ===================== SOBRE MÍ ===================== -->
     <section id="sobre-mi" class="section">
       <div class="container">
-        <h2>Sobre mí</h2>
-        <!-- [RELLENO] Texto de perfil real en la Etapa 3 -->
-        <p class="placeholder">[RELLENO] Texto de perfil (se completa en la Etapa 3).</p>
+        <h2 data-i18n="about.title">Sobre mí</h2>
+        <p class="about-text" data-i18n="about.profile">
+          Ingeniero en Multimedia enfocado en el desarrollo web y la creación de experiencias
+          interactivas para dispositivos móviles y entornos de realidad virtual. Cuento con
+          conocimientos en desarrollo de videojuegos, modelado y renderizado 3D, así como en la
+          creación y producción de contenido audiovisual, combinando diseño y narrativa en el
+          desarrollo de proyectos multimedia.
+        </p>
 
-        <h3>Educación</h3>
-        <!-- [RELLENO] Línea de tiempo de educación en la Etapa 3 -->
+        <h3 data-i18n="about.educationTitle">Educación</h3>
         <ol class="timeline">
-          <li class="placeholder">[RELLENO] Educación (línea de tiempo)</li>
-          <li class="placeholder">[RELLENO] Educación (línea de tiempo)</li>
+          <li>
+            <strong data-i18n="about.edu1.title">Ingeniería en Multimedia</strong>
+            <span class="timeline-place" data-i18n="about.edu1.place"
+              >Universidad Militar Nueva Granada</span
+            >
+            <span class="timeline-period" data-i18n="about.edu1.period">2022 — Actualmente</span>
+          </li>
+          <li>
+            <strong data-i18n="about.edu2.title">Bachillerato</strong>
+            <span class="timeline-place" data-i18n="about.edu2.place"
+              >Colegio Distrital Los Periodistas</span
+            >
+            <span class="timeline-period" data-i18n="about.edu2.period">2016 — 2021</span>
+          </li>
         </ol>
       </div>
     </section>
 
     <!-- ===================== EXPERIENCIA ===================== -->
+    <!-- Nota: nunca incluir teléfonos ni datos de referencias personales. -->
     <section id="experiencia" class="section">
       <div class="container">
-        <h2>Experiencia</h2>
+        <h2 data-i18n="experience.title">Experiencia</h2>
 
-        <h3>Experiencia laboral</h3>
-        <!-- [RELLENO] Línea de tiempo de experiencia laboral en la Etapa 3 (sin teléfonos ni referencias) -->
+        <h3 data-i18n="experience.jobsTitle">Experiencia laboral</h3>
         <ol class="timeline">
-          <li class="placeholder">[RELLENO] Experiencia laboral (línea de tiempo)</li>
-          <li class="placeholder">[RELLENO] Experiencia laboral (línea de tiempo)</li>
+          <li>
+            <strong data-i18n="experience.job1.role">Asesor comercial temporal</strong>
+            <span class="timeline-place" data-i18n="experience.job1.company">Forus Colombia</span>
+            <span class="timeline-period" data-i18n="experience.job1.period"
+              >04/12/2024 — 31/12/2024</span
+            >
+          </li>
+          <li>
+            <strong data-i18n="experience.job2.role">Asesor comercial temporal</strong>
+            <span class="timeline-place" data-i18n="experience.job2.company">Forus Colombia</span>
+            <span class="timeline-period" data-i18n="experience.job2.period"
+              >05/12/2025 — 04/01/2026</span
+            >
+          </li>
+          <li>
+            <strong data-i18n="experience.job3.role">Auxiliar de inventario temporal</strong>
+            <span class="timeline-place" data-i18n="experience.job3.company">Pernine Ltda</span>
+            <span class="timeline-period" data-i18n="experience.job3.period"
+              >19/01/2026 — 27/01/2026</span
+            >
+          </li>
         </ol>
 
-        <h3>Logros</h3>
-        <!-- [RELLENO] Logros reales en la Etapa 3 -->
-        <ul>
-          <li class="placeholder">[RELLENO] Logros</li>
+        <h3 data-i18n="experience.achievementsTitle">Logros</h3>
+        <ul class="achievements">
+          <li data-i18n="experience.achievement1">
+            Participación en el 19.° Congreso Colombiano de Computación 2025 con el videojuego de
+            físicas «Tiro Perfecto» (rol: Desarrollador).
+          </li>
         </ul>
       </div>
     </section>
@@ -155,7 +206,7 @@
     <!-- Todo el contenido de esta sección se genera desde js/projects-data.js (Etapa 4). -->
     <section id="trabajos" class="section">
       <div class="container">
-        <h2>Trabajos</h2>
+        <h2 data-i18n="nav.works">Trabajos</h2>
 
         <!-- [RELLENO] Barra de filtros por etiqueta (Etapa 6) -->
         <div class="filters">
@@ -226,7 +277,7 @@
     <!-- ===================== HERRAMIENTAS ===================== -->
     <section id="herramientas" class="section">
       <div class="container">
-        <h2>Herramientas</h2>
+        <h2 data-i18n="tools.title">Herramientas</h2>
         <!-- [RELLENO] Los íconos reales (assets/icons/) se agregan en la Etapa 7 -->
         <div class="tools-grid">
           <div class="tool placeholder">[RELLENO] Unity</div>
@@ -246,7 +297,7 @@
   <!-- ===================== FOOTER / CONTACTO ===================== -->
   <footer id="contacto" class="site-footer">
     <div class="container">
-      <h2>Contacto</h2>
+      <h2 data-i18n="footer.contactTitle">Contacto</h2>
 
       <!-- [RELLENO] Enlaces reales en la Etapa 7 (correo, LinkedIn, GitHub) -->
       <ul class="contact-links">
@@ -255,9 +306,15 @@
         <li class="placeholder">[RELLENO] GitHub</li>
       </ul>
 
-      <a class="btn" href="assets/cv/hoja-de-vida.pdf" download>Descargar CV</a>
+      <a
+        class="btn"
+        href="assets/cv/hoja-de-vida.pdf"
+        download
+        data-i18n="hero.downloadCV"
+        >Descargar CV</a
+      >
 
-      <h3>Certificados</h3>
+      <h3 data-i18n="footer.certificatesTitle">Certificados</h3>
       <!-- [RELLENO] Galería con lightbox en la Etapa 7 -->
       <div class="certificates-grid">
         <div class="placeholder">[RELLENO] Certificado</div>
@@ -265,12 +322,12 @@
         <div class="placeholder">[RELLENO] Certificado</div>
       </div>
 
-      <p class="copyright">© 2026 Yoann Jacome</p>
+      <p class="copyright" data-i18n="footer.copyright">© 2026 Yoann Jacome</p>
     </div>
   </footer>
 
   <!-- ===================== SCRIPTS ===================== -->
-  <!-- Archivos todavía vacíos (se completan en las Etapas 2–6) -->
+  <!-- Archivos todavía vacíos (se completan en las Etapas 4–6) -->
   <script src="js/i18n.js"></script>
   <script src="js/projects-data.js"></script>
   <script src="js/theme.js"></script>
