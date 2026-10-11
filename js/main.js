@@ -43,6 +43,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Aplica los textos de i18n.js (español por ahora) al HTML estático.
     if (window.applyTranslations) window.applyTranslations(document);
+    // Genera las categorías, subcategorías y tarjetas de Trabajos.
+    if (window.renderWorks) window.renderWorks();
     initMobileNav();
   });
 })();

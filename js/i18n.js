@@ -44,6 +44,17 @@ window.I18N = {
     "about.profile":
       "Me enfoco en el desarrollo web y la creación de experiencias interactivas para dispositivos móviles y entornos de realidad virtual. Cuento con conocimientos en desarrollo de videojuegos, modelado y renderizado 3D, así como en la creación y producción de contenido audiovisual, combinando diseño y narrativa en el desarrollo de proyectos multimedia.",
 
+    /* ---------- Trabajos (categorías y subcategorías) ---------- */
+    "works.development": "Desarrollo",
+    "works.audiovisual": "Contenido digital audiovisual",
+    "works.sub.videogames": "Videojuegos",
+    "works.sub.vr": "Realidad virtual",
+    "works.sub.web": "Web y apps móviles",
+    "works.sub.model3d": "Modelado y renderizado 3D",
+    "works.sub.video": "Video",
+    "works.sub.audio": "Audio",
+    "works.sub.motion": "Motion graphics",
+
     /* ---------- Herramientas (los íconos llegan en la Etapa 7) ---------- */
     "tools.title": "Herramientas",
 
