@@ -108,7 +108,7 @@
     card.setAttribute("data-id", project.id || "");
     card.setAttribute("tabindex", "0");
     card.setAttribute("role", "button");
-    if (title) card.setAttribute("aria-label", "Ver detalle de " + title);
+    if (title) card.setAttribute("aria-label", window.t("works.openDetail") + " " + title);
 
     // --- Miniatura 16:9 ---
     var thumb = el("div", "work-thumb");
@@ -207,4 +207,9 @@
 
   // Expuesto para que main.js lo llame cuando el DOM esté listo.
   window.renderWorks = renderWorks;
+
+  // Devuelve la etiqueta traducida de una subcategoría (la usa el modal).
+  window.worksSubcategoryLabel = function (key) {
+    return window.t(SUBCATEGORY_LABELS[key] || key);
+  };
 })();

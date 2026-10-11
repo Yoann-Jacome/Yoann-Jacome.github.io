@@ -45,6 +45,8 @@
     if (window.applyTranslations) window.applyTranslations(document);
     // Genera las categorías, subcategorías y tarjetas de Trabajos.
     if (window.renderWorks) window.renderWorks();
+    // Conecta las tarjetas con el modal y maneja el hash #id (Etapa 5).
+    if (window.initModal) window.initModal();
     initMobileNav();
   });
 })();

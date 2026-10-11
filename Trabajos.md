@@ -60,7 +60,7 @@ Rol: Modelador 3D - Creación de entorno del videojuego (casa), elaboración de 
 Resumen corto: Aventura de misterio y puzzles en Realidad Virtual (VR). Explora una casa en la Bogotá de los años 80, habla con NPCs y resuelve acertijos para reunir los fragmentos de una fotografía.
 Descripción larga: Framentos ofrece un viaje en el tiempo a la vibrante Bogotá de la década de 1980 en esta experiencia de misterio y exploración en Realidad Virtual. Te encuentras dentro de una casa tradicional colombiana llena de objetos de la época y una atmósfera cargada de nostalgia. Tu misión es encontrar y reconstruir una fotografía que ha sido dividida en tres fragmentos ocultos. Para lograrlo, deberás interactuar con el entorno, resolver puzzles y conversar con los habitantes de la casa, quienes te darán pistas para superar los desafíos y completar la foto. 
 YouTube: https://youtu.be/d-vHVhG8PTA
-Imágenes: (Tumb) Fragmentos.jpg
+Imágenes: (Tumb) Fragmentos.jpg, imagenes de renders de modelos elaborados para galeria en: *C:\Users\yoann\OneDrive\Desktop\universidad\Portafolio\assets\img\projects\fragmentos*
 Equipo de trabajo: Yoann Jacome, David Mendieta, Juan Vasquez, Astrid Melo, Sebastian Guzman, Laura Robayo
 Etiquetas: Videojuego, VR, Realidad Virtual, Unity, 3D, C#, Maya
 
@@ -137,3 +137,43 @@ YouTube: https://youtu.be/YpaaZFgtJ3E
 Imágenes: (Tumb) motorola-playstore-ad.jpg
 Equipo de trabajo: Yoann Jacome
 Etiquetas: Animación 3D, Motion Graphics, Publicidad, Prototipado, Figma, After Effects
+
+Trabajo: El Antídoto
+Categoría: Contenido digital audiovisual / Animación 2D
+Rol: Animador 2D / Guionista / Postproductor
+Resumen corto: Cortometraje de animación 2D que implementa cámara multiplano, principios clásicos de animación y postproducción
+Descripción larga: Este proyecto es un cortometraje animado en 2D desarrollado como un producto integral para demostrar el dominio de diversas técnicas de producción audiovisual. A través de una breve secuencia narrativa.
+YouTube: https://youtu.be/QBpyzA9w7o0
+Imágenes: el-antidoto.jpg
+Equipo de trabajo: Yoann Jacome
+Etiquetas: Animación 2D, Adobe Animate, Cortometraje, Postproducción, Principios de la Animación, Audio.
+
+Trabajo: Diversidad de modelos 3D
+Categoría: Modelado 3D / Renders
+Rol: Modelador 3D y renderizador
+Resumen corto: Recopilación de modelos 3D
+Descripción larga: Este apartado incluye diversidad de los modelados 3D realizados, usando poligonos y NURBS. Puesta en escena con luces para renders
+YouTube: *No aplica - galeria de imagenes*
+Imágenes: Carpeta de imagenes en *C:\Users\yoann\OneDrive\Desktop\universidad\Portafolio\assets\img\projects\Modelado 3D*
+Equipo de trabajo: Yoann Jacome
+Etiquetas: Modelado 3D, Autodesk MAYA, Render, luces
+
+Trabajo: Diversidad de renders
+Categoría: Modelado 3D / Renders
+Rol: Modelador 3D y renderizador
+Resumen corto: Recopilación de renders y modelados 3D
+Descripción larga: Este apartado incluye diversidad de los renders 3D realizados, incluyendo distintos esquemas de iluminación.
+YouTube: *No aplica - galeria de imagenes*
+Imágenes: Carpeta de imagenes en, colocar estilo carrusel o con slider para cambiar de imagen *C:\Users\yoann\OneDrive\Desktop\universidad\Portafolio\assets\img\projects\Renders*
+Equipo de trabajo: Yoann Jacome
+Etiquetas: Render, Modelado 3D, Autodesk MAYA, luces
+
+Trabajo: Idles Animacion 3D
+Categoría: Animación 3D
+Rol: Animador 3D - Implementación de idles animados en Unity
+Resumen corto: Integración de distintos idles animados en MAYA en motor de Unity
+Descripción larga: *misma descripcion corta, no es necesario una mas larga*
+YouTube: https://yoann-jacome.itch.io/animacionvideojuego o https://youtu.be/DiEJCd8PenU?si=NX3t0HzPHb2VzvH7
+Imágenes: idles.jpg
+Equipo de trabajo: Yoann Jacome
+Etiquetas: Render, Modelado 3D, Autodesk MAYA, luces

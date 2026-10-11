@@ -54,6 +54,15 @@ window.I18N = {
     "works.sub.video": "Video",
     "works.sub.audio": "Audio",
     "works.sub.motion": "Motion graphics",
+    "works.openDetail": "Ver detalle de",
+
+    /* ---------- Modal (Etapa 5) ---------- */
+    "modal.close": "Cerrar",
+    "modal.prev": "Anterior",
+    "modal.next": "Siguiente",
+    "modal.openImage": "Abrir imagen en tamaño completo",
+    "modal.team": "Equipo",
+    "modal.goToSlide": "Ir a la diapositiva",
 
     /* ---------- Herramientas (los íconos llegan en la Etapa 7) ---------- */
     "tools.title": "Herramientas",

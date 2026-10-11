@@ -14,16 +14,29 @@
      summary      texto de la tarjeta (se recorta a 3 líneas)
      description  descripción completa del modal
      thumbnail    ruta a la miniatura (assets/img/thumbs/...)
+                  Si falta, se usa la primera imagen de media.
      media        arreglo de { type: "youtube", url } y/o
                              { type: "image", src, caption }
                   Puede estar vacío (ej. trabajo sin video ni imágenes).
+                  En el modal, las imágenes forman un carrusel que muestra
+                  UNA imagen completa a la vez; su orden es el del arreglo.
      tags         etiquetas (alimentan los filtros de la Etapa 6)
      team         (opcional) nombres del equipo; se muestra en el modal
      links        (opcional) botones extra: { label, url }
 
    Los textos (role, summary, description, caption, tags) pueden ser un
    string en español o un objeto { es, en } para la Etapa 8.
+
+   Para facilitar galerías con muchas imágenes existe el ayudante
+   gallery(dir, nombres): convierte una lista de archivos en objetos media.
    ===================================================================== */
+
+/* Convierte una lista de nombres de archivo (dentro de `dir`) en media. */
+function gallery(dir, names) {
+  return names.map(function (name) {
+    return { type: "image", src: dir + name };
+  });
+}
 
 window.PROJECTS = [
   /* ==================== DESARROLLO / VIDEOJUEGOS ==================== */
@@ -114,7 +127,37 @@ window.PROJECTS = [
     description:
       "Fragmentos es una experiencia de misterio y exploración en Realidad Virtual ambientada en la Bogotá de la década de 1980. Te encuentras dentro de una casa tradicional colombiana llena de objetos de la época y una atmósfera cargada de nostalgia. Tu misión es encontrar y reconstruir una fotografía dividida en tres fragmentos ocultos: para lograrlo, deberás interactuar con el entorno, resolver puzzles y conversar con los habitantes de la casa, quienes te darán pistas para superar los desafíos y completar la foto.",
     thumbnail: "assets/img/thumbs/fragmentos.jpg",
-    media: [{ type: "youtube", url: "https://youtu.be/d-vHVhG8PTA" }],
+    // Video primero y luego los renders del entorno que modelé, en el orden
+    // numérico de la carpeta assets/img/projects/fragmentos/.
+    media: [{ type: "youtube", url: "https://youtu.be/d-vHVhG8PTA" }].concat(
+      gallery("assets/img/projects/fragmentos/", [
+        "Render_1.png",
+        "Render_2.png",
+        "Render_3.png",
+        "Render_4.png",
+        "Render_5.png",
+        "Render_6.png",
+        "Render_7.jpg",
+        "Render_8.png",
+        "Render_9.png",
+        "Render_10.jpg",
+        "Render_11.jpg",
+        "Render_12.png",
+        "Render_13.png",
+        "Render_14.png",
+        "Render_15.png",
+        "Render_16.png",
+        "Render_17.png",
+        "Render_18.png",
+        "Render_19.jpg",
+        "Render_20.jpg",
+        "Render_21.jpg",
+        "Render_22.jpg",
+        "Render_23.jpg",
+        "Render_24.jpg",
+        "Render_25.jpg"
+      ])
+    ),
     tags: ["Videojuego", "VR", "Realidad Virtual", "Unity", "3D", "C#", "Maya"],
     team: [
       "Yoann Jacome",
@@ -215,6 +258,121 @@ window.PROJECTS = [
       "Alejandra Suarez",
       "Juanita Palacios"
     ]
+  },
+  {
+    id: "el-antidoto",
+    title: "El Antídoto",
+    category: "audiovisual",
+    subcategory: "video",
+    role: "Animador 2D / Guionista / Postproductor",
+    summary:
+      "Cortometraje de animación 2D que implementa cámara multiplano, principios clásicos de animación y postproducción.",
+    description:
+      "Este proyecto es un cortometraje animado en 2D desarrollado como un producto integral para demostrar el dominio de diversas técnicas de producción audiovisual, a través de una breve secuencia narrativa.",
+    thumbnail: "assets/img/thumbs/el-antidoto.jpg",
+    media: [{ type: "youtube", url: "https://youtu.be/QBpyzA9w7o0" }],
+    tags: ["Animación 2D", "Adobe Animate", "Cortometraje", "Postproducción", "Principios de la Animación", "Audio"],
+    team: ["Yoann Jacome"]
+  },
+
+  /* === CONTENIDO DIGITAL AUDIOVISUAL / MODELADO Y RENDERIZADO 3D === */
+  {
+    id: "diversidad-modelos-3d",
+    title: "Diversidad de modelos 3D",
+    category: "audiovisual",
+    subcategory: "model3d",
+    role: "Modelador 3D y renderizador",
+    summary: "Recopilación de modelados 3D realizados con polígonos y NURBS, con puesta en escena de luces para los renders.",
+    description:
+      "Este apartado reúne distintos modelados 3D realizados con polígonos y NURBS en Autodesk Maya, junto con la puesta en escena de luces utilizada para los renders.",
+    // Sin video: la miniatura usará la primera imagen de la galería.
+    media: gallery("assets/img/projects/modelado-3d/", [
+      "render_1.png",
+      "render_2.png",
+      "render_3.png",
+      "render_4.png",
+      "render_5.png",
+      "render_6.png",
+      "render_7.png",
+      "render_8.png",
+      "render_9.png",
+      "render_10.png",
+      "render_11.jpg",
+      "render_12.png",
+      "render_13.png",
+      "render_14.png",
+      "render_15.png",
+      "render_16.png",
+      "render_17.png",
+      "render_18.png",
+      "render_19.png",
+      "render_20.png",
+      "render_21.png",
+      "render_22.jpg"
+    ]),
+    tags: ["Modelado 3D", "Autodesk Maya", "Render", "Luces"],
+    team: ["Yoann Jacome"]
+  },
+  {
+    id: "diversidad-renders",
+    title: "Diversidad de renders",
+    category: "audiovisual",
+    subcategory: "model3d",
+    role: "Modelador 3D y renderizador",
+    summary: "Recopilación de renders y modelados 3D con distintos esquemas de iluminación.",
+    description:
+      "Este apartado reúne los renders 3D realizados, incluyendo distintos esquemas de iluminación y puestas en escena.",
+    // Orden solicitado por el dueño: evita que imágenes similares (ej. los
+    // legos) queden seguidas y permita ver el resto (ej. la tortuga).
+    // Primero: Render_1, 17, 5, 21, 6, 23, 14, 22 — luego el resto.
+    media: gallery("assets/img/projects/renders/", [
+      "Render_1.png",
+      "Render_17.jpg",
+      "Render_5.png",
+      "Render_21.jpg",
+      "Render_6.png",
+      "Render_23.jpg",
+      "Render_14.png",
+      "Render_22.jpg",
+      "Render_2.png",
+      "Render_3.png",
+      "Render_4.png",
+      "Render_7.png",
+      "Render_8.png",
+      "Render_9.png",
+      "Render_10.png",
+      "Render_11.png",
+      "Render_12.png",
+      "Render_13.png",
+      "Render_15.png",
+      "Render_16.png",
+      "Render_18.png",
+      "Render_19.png",
+      "Render_20.png",
+      "Render_24.png",
+      "Render_25.png",
+      "Render_26.png",
+      "Render_27.png"
+    ]),
+    tags: ["Render", "Modelado 3D", "Autodesk Maya", "Luces"],
+    team: ["Yoann Jacome"]
+  },
+  {
+    id: "idles-animacion-3d",
+    title: "Idles Animación 3D",
+    category: "audiovisual",
+    subcategory: "model3d",
+    role: "Animador 3D - Implementación de idles animados en Unity",
+    summary: "Integración de distintos idles animados en Maya dentro del motor Unity.",
+    description:
+      "Integración de distintos idles animados en Maya dentro del motor Unity, mostrando la implementación de las animaciones de personaje en un proyecto de videojuego.",
+    thumbnail: "assets/img/thumbs/idles.jpg",
+    media: [{ type: "youtube", url: "https://youtu.be/DiEJCd8PenU" }],
+    links: [
+      { label: "Ver en itch.io", url: "https://yoann-jacome.itch.io/animacionvideojuego" }
+    ],
+    tags: ["Animación 3D", "Unity", "Maya", "Idles"],
+    team: ["Yoann Jacome"]
   },
 
   /* ============ CONTENIDO DIGITAL AUDIOVISUAL / MOTION GRAPHICS ============ */
