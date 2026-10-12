@@ -79,6 +79,11 @@ a {
   text-align: center;
 }
 
+/* Título de cada sección centrado (coherente con Sobre mí y Logros). */
+.section h2 {
+  text-align: center;
+}
+
 .section--center .about-text {
   margin-left: auto;
   margin-right: auto;
@@ -149,23 +154,18 @@ footer[id] {
   font-size: 0.9rem;
 }
 
-/* --- Grilla de tarjetas de trabajos (3 / 2 / 1 columnas) --- */
+/* --- Grilla de tarjetas de trabajos ---
+   Filas incompletas (1 o 2 tarjetas) se centran con espacio a ambos lados. */
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
-@media (max-width: 900px) {
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
+.cards-grid .work-card {
+  flex: 1 1 300px;
+  max-width: 340px;
 }
 
 /* Lista de logros */

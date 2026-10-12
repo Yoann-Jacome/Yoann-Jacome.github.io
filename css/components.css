@@ -205,6 +205,7 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   margin: 20px 0 32px;
 }
@@ -686,8 +687,9 @@ body.scroll-locked {
 
 /* ===================== HERRAMIENTAS ===================== */
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
   margin-top: 20px;
 }
@@ -698,6 +700,8 @@ body.scroll-locked {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex: 1 1 130px;
+  max-width: 170px;
   min-height: 110px;
   padding: 18px 12px;
   text-align: center;
@@ -719,6 +723,8 @@ body.scroll-locked {
   padding: var(--section-y) 0 24px;
   border-top: 1px solid var(--border);
   background-color: var(--surface-2);
+  /* Todo el bloque (contacto, botón de CV y certificados) queda centrado. */
+  text-align: center;
 }
 
 /* Separación clara entre el bloque de contacto (con el botón de CV) y
@@ -729,21 +735,25 @@ body.scroll-locked {
 
 .contact-links {
   list-style: none;
-  margin: 0 0 24px;
+  margin: 0 auto 24px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 }
 
 .contact-links li {
-  min-width: 180px;
+  /* Los tres enlaces tienen el mismo ancho y quedan centrados. */
+  flex: 0 1 260px;
+  max-width: 300px;
 }
 
 .contact-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
   padding: 12px 18px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -751,13 +761,13 @@ body.scroll-locked {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
+  text-align: left;
   transition: border-color var(--transition), color var(--transition),
     transform var(--transition);
 }
 
 .contact-link:hover {
   border-color: var(--accent);
-  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -768,9 +778,36 @@ body.scroll-locked {
   flex-shrink: 0;
 }
 
+/* Etiqueta + dato textual (correo o enlace visible para poder copiarlo). */
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-label {
+  font-weight: 600;
+}
+
+.contact-value {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 400;
+  word-break: break-all;
+  transition: color var(--transition);
+}
+
+/* Al pasar el cursor (o enfocar) el enlace, el dato se subraya. */
+.contact-link:hover .contact-value,
+.contact-link:focus-visible .contact-value {
+  text-decoration: underline;
+}
+
 .certificates-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
   margin: 12px 0 8px;
 }
@@ -779,6 +816,8 @@ body.scroll-locked {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 0 1 240px;
+  max-width: 260px;
   padding: 10px;
   text-align: left;
   font: inherit;

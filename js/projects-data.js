@@ -407,6 +407,22 @@ window.PROJECTS = [
     media: [{ type: "youtube", url: "https://youtu.be/YpaaZFgtJ3E" }],
     tags: ["Animación 3D", "Motion Graphics", "Publicidad", "Prototipado", "Figma", "After Effects"],
     team: ["Yoann Jacome"]
+  },
+  {
+    id: "fightclub-cabezote",
+    title: "FightClub Cabezote",
+    category: "audiovisual",
+    subcategory: "motion",
+    role: "Producción, edición",
+    summary:
+      "Integración de distintos frames de la película \"Fight Club\" con estilo Punk y aplicación de transiciones.",
+    description:
+      "Se realizó el cabezote de la película \"Fight Club\" implementando un estilo particular \"Punk\". El cabezote consta de 10 frames y cinco textos, e incluye efectos sonoros y música para complementar el estilo y las transiciones.",
+    // Carátula y video pendientes: sin thumbnail se muestra el marcador
+    // "Sin imagen" y el modal no muestra área multimedia.
+    media: [],
+    tags: ["After Effects", "Photoshop", "Punk", "Audio"],
+    team: ["Yoann Jacome"]
   }
 
   // ...agregar más trabajos aquí (separados por comas)

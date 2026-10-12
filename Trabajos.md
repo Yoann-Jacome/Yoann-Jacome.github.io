@@ -177,3 +177,13 @@ YouTube: https://yoann-jacome.itch.io/animacionvideojuego o https://youtu.be/DiE
 Imágenes: idles.jpg
 Equipo de trabajo: Yoann Jacome
 Etiquetas: Render, Modelado 3D, Autodesk MAYA, luces
+
+Trabajo: FightClub Cabezote
+Categoría: Motion Graphics
+Rol: Producción, edición
+Resumen corto: Integración de distintos frames de la pelicula "Fight Club" con estilo Punk, aplicación de transiciones 
+Descripción larga: Se realizo el cabezote de la pelicula "Fight Club" donde se implementa un estilo particular "Punko", este cabezote consta de 10 frames y cinco textos, se añade tambien efectos sonoros y musica para complementar el estilo y las transiciones. 
+YouTube: *pendiente*
+Imágenes: *pendiente*
+Equipo de trabajo: Yoann Jacome
+Etiquetas: After Effects, Photoshop, Punk, Audio
