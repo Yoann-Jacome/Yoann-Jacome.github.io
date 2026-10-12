@@ -593,15 +593,7 @@ body.scroll-locked {
   border-radius: 999px;
   background-color: var(--surface);
   color: var(--text);
-  font: inherit;
   font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color var(--transition), color var(--transition);
-}
-
-.modal-tag:hover {
-  background-color: var(--accent);
-  color: var(--accent-contrast);
 }
 
 /* ===================== LIGHTBOX (certificados, Etapa 7) ===================== */

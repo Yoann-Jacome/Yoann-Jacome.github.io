@@ -312,22 +312,11 @@
       linksEl.appendChild(a);
     });
 
-    // Etiquetas: al hacer clic se cierra el modal y se aplica el filtro
-    // (la barra de filtros llega en la Etapa 6).
+    // Etiquetas del trabajo: solo informativas dentro del modal.
     var tagsEl = el.querySelector(".modal-tags");
     tagsEl.textContent = "";
     (Array.isArray(project.tags) ? project.tags : []).forEach(function (tag) {
-      var li = document.createElement("li");
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "modal-tag";
-      btn.textContent = t(tag);
-      btn.addEventListener("click", function () {
-        closeModal();
-        if (window.applyWorksFilter) window.applyWorksFilter(t(tag));
-      });
-      li.appendChild(btn);
-      tagsEl.appendChild(li);
+      tagsEl.appendChild(el2("li", "modal-tag", t(tag)));
     });
 
     // Multimedia → carrusel.

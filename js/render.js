@@ -106,6 +106,7 @@
     // en la Etapa 5 mediante data-id).
     var card = el("article", "work-card");
     card.setAttribute("data-id", project.id || "");
+    card.setAttribute("data-sub", project.subcategory || "");
     card.setAttribute("tabindex", "0");
     card.setAttribute("role", "button");
     if (title) card.setAttribute("aria-label", window.t("works.openDetail") + " " + title);
@@ -153,14 +154,9 @@
 
     var tags = Array.isArray(project.tags) ? project.tags : [];
     if (tags.length) {
-      // Traduce una sola vez y guarda TODAS las etiquetas en la tarjeta: así
-      // los filtros pueden usarlas aunque la tarjeta muestre solo 3.
-      var tagLabels = tags.map(function (tag) { return window.t(tag); });
-      card.setAttribute("data-tags", JSON.stringify(tagLabels));
-
       var ul = el("ul", "work-tags");
-      tagLabels.slice(0, 3).forEach(function (label) {
-        ul.appendChild(el("li", "work-tag", label));
+      tags.slice(0, 3).forEach(function (tag) {
+        ul.appendChild(el("li", "work-tag", window.t(tag)));
       });
       body.appendChild(ul);
     }
@@ -216,21 +212,24 @@
 
   /* ===================== Filtros (Etapa 6) ===================== */
 
-  var filterButtons = {}; // etiqueta → botón de la barra
+  var filterButtons = {}; // clave de subcategoría → botón de la barra
 
-  /* Etiquetas únicas (traducidas), en orden de aparición en los datos. */
-  function collectTags() {
-    var labels = [];
-    getProjects().forEach(function (p) {
-      (Array.isArray(p.tags) ? p.tags : []).forEach(function (tag) {
-        var label = window.t(tag);
-        if (labels.indexOf(label) === -1) labels.push(label);
+  /* Subcategorías con trabajos, en el orden de CATEGORIES. */
+  function presentFilters() {
+    var out = [];
+    CATEGORIES.forEach(function (category) {
+      presentSubcategories(category).forEach(function (subKey) {
+        out.push({
+          key: subKey,
+          label: window.t(SUBCATEGORY_LABELS[subKey] || subKey)
+        });
       });
     });
-    return labels;
+    return out;
   }
 
-  /* Genera la barra: "Todos" + una pestaña por etiqueta. */
+  /* Genera la barra: "Todos" + una pestaña por subcategoría (Videojuegos,
+     Realidad virtual, Web y apps móviles, Modelado 3D, Video, Motion...). */
   function renderFilters() {
     var container = document.getElementById("works-filters");
     if (!container) return;
@@ -244,32 +243,27 @@
     container.appendChild(all);
     filterButtons[""] = all;
 
-    collectTags().forEach(function (label) {
-      var btn = el("button", "filter-btn", label);
+    presentFilters().forEach(function (item) {
+      var btn = el("button", "filter-btn", item.label);
       btn.type = "button";
       btn.setAttribute("aria-pressed", "false");
-      btn.addEventListener("click", function () { applyWorksFilter(label); });
+      btn.addEventListener("click", function () { applyWorksFilter(item.key); });
       container.appendChild(btn);
-      filterButtons[label] = btn;
+      filterButtons[item.key] = btn;
     });
   }
 
-  /* Oculta las tarjetas que no tienen la etiqueta y las secciones que
-     queden vacías. Con "" (o sin argumento) se muestran todas. */
-  function applyWorksFilter(label) {
-    label = label || "";
+  /* Muestra solo los trabajos de una subcategoría ("" = todos) y oculta las
+     secciones que queden vacías. */
+  function applyWorksFilter(subKey) {
+    subKey = subKey || "";
     var container = document.getElementById("works-list");
     if (!container) return;
 
-    // 1) Tarjetas que no coinciden.
+    // 1) Tarjetas que no son de la subcategoría elegida.
     Array.prototype.forEach.call(container.querySelectorAll(".work-card"), function (card) {
-      var tags = [];
-      try {
-        tags = JSON.parse(card.getAttribute("data-tags") || "[]");
-      } catch (e) {
-        tags = [];
-      }
-      card.hidden = !!label && tags.indexOf(label) === -1;
+      var sub = card.getAttribute("data-sub") || "";
+      card.hidden = !!subKey && sub !== subKey;
     });
 
     // 2) Subcategorías sin tarjetas visibles.
@@ -292,7 +286,7 @@
 
     // 4) Estado accesible de los botones (aria-pressed).
     Object.keys(filterButtons).forEach(function (key) {
-      filterButtons[key].setAttribute("aria-pressed", String(key === label));
+      filterButtons[key].setAttribute("aria-pressed", String(key === subKey));
     });
   }
 

@@ -65,7 +65,7 @@ window.I18N = {
     "modal.goToSlide": "Ir a la diapositiva",
 
     /* ---------- Filtros (Etapa 6) ---------- */
-    "filters.label": "Filtrar trabajos por etiqueta",
+    "filters.label": "Filtrar trabajos por categoría",
     "filters.all": "Todos",
 
     /* ---------- Herramientas, certificados y contacto (Etapa 7) ---------- */
